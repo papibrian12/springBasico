@@ -22,14 +22,20 @@ public class AutoService implements GeneralInterfaceCrud<Auto>{
 
 	@Override
 	public Auto obtenerPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+         return carroDao.obtenerPorId(id);
 	}
 
 	@Override
 	public Auto EliminarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			
+			Auto autoAEliminar = obtenerPorId(id);
+			carroDao.deleteById(id);
+			return autoAEliminar;
+			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
